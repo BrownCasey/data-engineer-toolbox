@@ -1,2 +1,2 @@
 # data-engineer-tools
-Repository for data engineering projects
+Repository for exploring data engineering tools and making notes
