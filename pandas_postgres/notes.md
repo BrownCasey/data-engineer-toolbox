@@ -27,7 +27,7 @@ root@localhost:grain>
 ```
 ## Wget a csv and open it with Pandas
 `jupyter notebook Read_Grain.ipynb`
-
+[notebook](https://github.com/BrownCasey/data-engineer-tools/blob/main/pandas_postgres/Read_Grain.ipynb)
 ## Connect to postgres with sqlalchemy
 
 ## Create a table and insert data
