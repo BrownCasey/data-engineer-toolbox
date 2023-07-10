@@ -10,6 +10,7 @@ docker run -it \
     -p 5432:5432 \
     postgres:13
 ```
+
 ## Connect to the postgres DB with pgcli
 `winpty pgcli -h localhost -u root -d grain`
 ```
@@ -25,13 +26,41 @@ SELECT 0
 Time: 0.016s
 root@localhost:grain>
 ```
+
 ## Wget a csv and open it with Pandas
 `jupyter notebook Read_Grain.ipynb`
 [notebook](https://github.com/BrownCasey/data-engineer-tools/blob/main/pandas_postgres/Read_Grain.ipynb)
+
 ## Connect to postgres with sqlalchemy
+```from sqlalchemy import create_engine
+conn = create_engine("postgresql://root:root@localhost:5432/grain")
+conn.connect()
+<sqlalchemy.engine.base.Connection at 0x232280332b0>```
 
 ## Create a table and insert data
+```print(pd.io.sql.get_schema(df, con=conn, name="grain_tbl"))
 
+CREATE TABLE grain_tbl (
+	"SC_Group_ID" BIGINT, 
+	"SC_Group_Desc" TEXT, 
+	"SC_GroupCommod_ID" BIGINT, 
+	"SC_GroupCommod_Desc" TEXT, 
+	"SC_Geography_ID" BIGINT, 
+	"SortOrder" FLOAT(53), 
+	"SC_GeographyIndented_Desc" TEXT, 
+	"SC_Commodity_ID" BIGINT, 
+	"SC_Commodity_Desc" TEXT, 
+	"SC_Attribute_ID" BIGINT, 
+	"SC_Attribute_Desc" TEXT, 
+	"SC_Unit_ID" BIGINT, 
+	"SC_Unit_Desc" TEXT, 
+	"Year_ID" BIGINT, 
+	"SC_Frequency_ID" BIGINT, 
+	"SC_Frequency_Desc" TEXT, 
+	"Timeperiod_ID" BIGINT, 
+	"Timeperiod_Desc" TEXT, 
+	"Amount" FLOAT(53)
+)```
 ## Create a network with Docker
 
 ## Take data arguments in insert script
