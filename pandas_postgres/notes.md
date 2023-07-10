@@ -63,7 +63,7 @@ CREATE TABLE grain_tbl (
 )
 ```
 
-`df.head(n=0).to_sql(name="grain", con=conn, if_exists='replace')
+`df.head(n=0).to_sql(name="grain", con=conn, if_exists='replace')`
 
 ## Create a network with Docker
 
