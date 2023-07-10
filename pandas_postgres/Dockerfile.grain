@@ -1,0 +1,7 @@
+FROM python:3.9
+
+RUN pip install pandas sqlalchemy wget psycopg2
+
+COPY etl_grain.py etl_grain.py
+
+ENTRYPOINT ["python", "etl_grain.py"]
