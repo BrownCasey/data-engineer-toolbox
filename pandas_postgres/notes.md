@@ -15,10 +15,10 @@
 ## Take data arguments in insert script
 
 ## Make the Dockerfile and build it
-'docker build -f Dockerfile.grain -t etl:grain .'
+1docker build -f Dockerfile.grain -t etl:grain .1
 
 ## Run the import
-'''
+```
 docker run -it \
 --network=pg-network \
 etl:grain \
@@ -28,4 +28,4 @@ etl:grain \
 --host=pg-database \
 --port=5432 \
 --db=grain
-'''
+```
