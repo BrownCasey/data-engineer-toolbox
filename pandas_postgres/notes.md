@@ -15,7 +15,7 @@
 ## Take data arguments in insert script
 
 ## Make the Dockerfile and build it
-1docker build -f Dockerfile.grain -t etl:grain .1
+`docker build -f Dockerfile.grain -t etl:grain .`
 
 ## Run the import
 ```
