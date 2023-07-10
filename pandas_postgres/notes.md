@@ -60,7 +60,11 @@ CREATE TABLE grain_tbl (
 	"Timeperiod_ID" BIGINT, 
 	"Timeperiod_Desc" TEXT, 
 	"Amount" FLOAT(53)
-)```
+)
+```
+
+`df.head(n=0).to_sql(name="grain", con=conn, if_exists='replace')
+
 ## Create a network with Docker
 
 ## Take data arguments in insert script
