@@ -125,7 +125,8 @@ if __name__ == "__main__":
     main(args)
 ```
 ## Make the Dockerfile and build it
-```FROM python:3.9
+```
+FROM python:3.9
 
 RUN pip install pandas sqlalchemy wget psycopg2
 
