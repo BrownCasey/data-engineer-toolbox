@@ -172,3 +172,32 @@ grain> select count(1) from grain_data;
 SELECT 1
 Time: 0.040s
 ```
+
+## Docker Compose
+[docker-compose.yaml](https://github.com/BrownCasey/data-engineering-toolbox/blob/main/pandas_postgres/docker-compose.yaml)
+
+```
+docker compose up -d
+ Container pandas_postgres-pg-admin-1  Created
+ Container pandas_postgres-pg-database-1  Created
+ Container pandas_postgres-pg-database-1  Starting
+ Container pandas_postgres-pg-admin-1  Starting
+ Container pandas_postgres-pg-database-1  Started
+ Container pandas_postgres-pg-admin-1  Started
+```
+```
+docker compose down
+ Container pandas_postgres-pg-admin-1  Stopping
+ Container pandas_postgres-pg-admin-1  Stopping
+ Container pandas_postgres-pg-database-1  Stopping
+ Container pandas_postgres-pg-database-1  Stopping
+ Container pandas_postgres-pg-database-1  Stopped
+ Container pandas_postgres-pg-database-1  Removing
+ Container pandas_postgres-pg-database-1  Removed
+ Container pandas_postgres-pg-admin-1  Stopped
+ Container pandas_postgres-pg-admin-1  Removing
+ Container pandas_postgres-pg-admin-1  Removed
+ Network pandas_postgres_default  Removing
+ Network pandas_postgres_default  Removed
+
+```
