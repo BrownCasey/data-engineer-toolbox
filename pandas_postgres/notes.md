@@ -6,7 +6,7 @@ docker run -it \
     -e POSTGRES_USER="root" \
     -e POSTGRES_PASSWORD="root" \
     -e POSTGRES_DB="grain" \
-    -v /c/Users/dataengineer/data:/var/lib/postgresql/data \
+    -v /c/Users/dataengineer/grain/data:/var/lib/postgresql/data \
     -p 5432:5432 \
     postgres:13
 ```
@@ -32,13 +32,16 @@ root@localhost:grain>
 [notebook](https://github.com/BrownCasey/data-engineer-tools/blob/main/pandas_postgres/Read_Grain.ipynb)
 
 ## Connect to postgres with sqlalchemy
-```from sqlalchemy import create_engine
+```
+from sqlalchemy import create_engine
 conn = create_engine("postgresql://root:root@localhost:5432/grain")
 conn.connect()
-<sqlalchemy.engine.base.Connection at 0x232280332b0>```
+<sqlalchemy.engine.base.Connection at 0x232280332b0>
+```
 
 ## Create a table and insert data
-```print(pd.io.sql.get_schema(df, con=conn, name="grain_tbl"))
+```
+print(pd.io.sql.get_schema(df, con=conn, name="grain_tbl"))
 
 CREATE TABLE grain_tbl (
 	"SC_Group_ID" BIGINT, 
@@ -66,7 +69,8 @@ CREATE TABLE grain_tbl (
 `df.head(n=0).to_sql(name="grain", con=conn, if_exists='replace')`
 
 ## Create a network with Docker
-```$ docker ps -a --filter "name=pg-database"
+```
+$ docker ps -a --filter "name=pg-database"
 CONTAINER ID   IMAGE         COMMAND                  CREATED         STATUS         PORTS                    NAMES
 7f19f0c8e74c   postgres:13   "docker-entrypoint.s…"   8 minutes ago   Up 8 minutes   0.0.0.0:5432->5432/tcp   pg-database
 
@@ -78,12 +82,13 @@ etl              grain      5d1a90c9d63e   20 hours ago    1.11GB
 etl              test       2d92988b0dab   6 days ago      1.09GB
 ```
 
-```docker network create pg-network
+```
+docker network create pg-network
 docker run -it \
     -e POSTGRES_USER="root" \
     -e POSTGRES_PASSWORD="root" \
     -e POSTGRES_DB="grain" \
-    -v /c/Users/dataengineer/tmp/data:/var/lib/postgresql/data \
+    -v /c/Users/dataengineer/grain/data:/var/lib/postgresql/data \
     -p 5432:5432 \
     --network=pg-network \
     --name pg-database \
@@ -101,7 +106,8 @@ docker run -it \
 # host=pg-database
 ```
 ## Take data arguments in python script
-```import argparse
+```
+import argparse
 
 def main(params):
     p1 = params.param1
@@ -144,7 +150,8 @@ etl:grain \
 ```
 ```
 <sqlalchemy.engine.base.Connection object at 0x7f26e9f7c160>
-100% [..........................................................................] 5399829 / 5399829Inserted 100000 in 6.7 seconds.
+100% [..........................................................................] 5399829 / 5399829
+Inserted 100000 in 6.7 seconds.
 Inserted 100000 in 7.2 seconds.
 Inserted 100000 in 6.7 seconds.
 Inserted 97725 in 6.6 seconds.
