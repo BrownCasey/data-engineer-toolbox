@@ -20,6 +20,8 @@ def main(params):
 
     df = next(df_iter)
 
+    # Lowercase attributes avoid case sensitivity in postgres
+    df.columns = df.columns.str.lower()
     df.head(n=0).to_sql(name='grain_data', con=conn, if_exists='replace')
     
     df.to_sql(name='grain_data', con=conn, if_exists='append')
